@@ -24,7 +24,7 @@ const T = new Twit({
 });
 
 T.get(
-  "search/tweets", { q: "#corona since:2020-03-1", count: 10, max_id: 1260994808841228288},
+  "search/tweets", { q: "#corona since:2020-03-1", count: 10},
   function (err, data, response) {
     try {
       fs.appendFileSync("tweets.json", JSON.stringify(data, response));
@@ -34,6 +34,16 @@ T.get(
   }
 );
 
-// T.get('search/tweets', {q: '#corona_virus since: 2020-03-01', count: 10, max_id: })
+T.get(
+  "search/tweets", { q: "#corona since:2020-03-1", count: 10},
+  function (err, data, response) {
+    try {
+      fs.appendFileSync("tweets.json", JSON.stringify(data, response));
+    } catch {
+      console.log(err)
+    }
+  }
+);
+
 
 // (#coronajihad OR #corona_jihad ) until:2020-04-15 since:2020-03-10
